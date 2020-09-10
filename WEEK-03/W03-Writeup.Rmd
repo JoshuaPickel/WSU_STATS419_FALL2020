@@ -1,0 +1,15 @@
+---
+title: "W03-WriteUp"
+author: "Josh Pickel"
+date: "9/9/2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r}
+
+
+
+```
