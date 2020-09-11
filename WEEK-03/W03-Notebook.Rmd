@@ -1,18 +1,251 @@
 ---
-title: "R Notebook"
-output: html_notebook
+title: 'R Notebook sandbox: Assignment "Datasets" (10 points)'
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+fig_caption: yes
+number_sections: yes
+my_var: Josh
 ---
 
-This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
 
-Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
 
-```{r}
-plot(cars)
+# Getting Everything Set Up
+```{r, Setup, message=FALSE,warning=FALSE}
+
+local.path = "C:/_git_/WSU_STATS419_FALL2020/";
+source(paste0(local.path,"/functions/libraries.R"),local = T)
+source( paste0(local.path,"functions/functions-imdb.R"), local=T );
+
+
 ```
 
-Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
 
-When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
 
-The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+# Matrix
+Create the "rotate matrix" functions as described in lectures.  Apply to the example "myMatrix".
+
+```{r, Matrix Rotations}
+source(paste0(local.path,"/functions/functions-matrix.R"),local = T)
+# Create myMatrix
+myMatrix = matrix ( c (
+1, 0, 2,
+0, 3, 0,
+4, 0, 5
+), nrow=3,
+byrow=T);
+
+# Rotating clockwise.
+rotateMatrix90(myMatrix)
+rotateMatrix180(myMatrix)
+rotateMatrix270(myMatrix)
+
+```
+
+
+# IRIS Question 2
+ Recreate the graphic for the IRIS Data Set using R. Same titles, same scales, same colors.
+
+```{r, warning = FALSE}
+library(datasets)
+plot(iris[1:4],pch = 21,cex = 1,col = 'black', bg= c("red", "green3",
+"blue")[iris$Species],main = 'Iris Data(red=sestosa,green=versicolor,blue=virginica)',gap.axis = 1.5)
+
+
+```
+
+# IRIS Question 3
+
+Right 2-3 sentences concisely defining the IRIS Data Set. Maybe search KAGGLE for
+a nice template. Be certain the final writeup are your own sentences (make certain
+you modify what you find, make it your own, but also cite where you got your ideas
+from). NOTE: Watch the video, Figure 8 has a +5 EASTER EGG.
+
+## Response
+
+The Iris data set was created in 1936 by Edgar Anderson and is a multivariate data set
+that containing four different measurements of three different Iris flower species.
+The data set contains 50 records for each of the different flower species; Setosa,
+Virginica, and Versicolor recording measurements for petal length, petal width, sepal
+width and sepal length, all recorded in centimeters.
+
+
+
+
+# Cleaning data Question 4
+ Import "personality-raw.txt" into R. Remove the V00 column. Create two new
+columns from the current column "date_test": year and week. Stack Overflow may help:
+https://stackoverflow.com/questions/22439540/how-to-get-week-numbers-from-dates ...
+Sort the new data frame by YEAR, WEEK so the newest tests are first ... The newest
+tests (e.g., 2020 or 2019) are at the top of the data frame. Then remove duplicates
+using the unique function based on the column "md5_email". Save the data frame in the
+same "pipe-delimited format" ( | is a pipe ) with the headers. You will keep the new
+data frame as "personality-clean.txt" for future work (you will not upload it at this
+time). In the homework, for this tasks, report how many records your raw dataset had
+and how many records your clean dataset has.
+
+```{r,clean data}
+
+source(paste0(local.path,"/functions/functions-cleanup.R"),local = T)
+files = paste0(local.path,"/datasets/personality-raw.txt")
+personality_raw = read.csv(files,header = T, sep = '|')
+personality_clean = removeColumn(personality_raw,'V00')
+personality_clean = convertDates(personality_clean,personality_clean$date_test)
+personality_clean = removeDuplicates(personality_clean,personality_clean$md5_email)
+dim(personality_clean)
+dim(personality_raw)
+head(personality_clean)
+```
+The raw dataset had 878 records, and the clean dataset has 673 records.
+
+
+# Custom Functions
+Write functions for doSummary and sampleVariance and doMode ... test these
+functions in your homework on the "monte.shaffer@gmail.com" record from the clean
+dataset. Report your findings. For this "monte.shaffer@gmail.com" record, also
+create z-scores. Plot(x,y) where x is the raw scores for "monte.shaffer@gmail.com"
+and y is the z-scores from those raw scores. Include the plot in your assignment, and
+write 2 sentences describing what pattern you are seeing and why this pattern is
+present.
+
+## Setup and Get Row For "monte.shaffer@gmail.com"
+``` {r}
+source(paste0(local.path,"/functions/functions-custom.R"),local = T)
+monte_row = personality_clean[which(personality_clean$md5_email ==
+'b62c73cdaf59e0a13de495b84030734e'),]
+
+```
+## doSummary
+```{r ,doSummary}
+doSummary(monte_row)
+```
+## custom_mode
+```{r, custom_mode}
+custom_mode(monte_row)
+```
+## doSampleVariance Naive
+```{r,doSampleVariance Naive}
+doSampleVariance(monte_row, 'naive')
+```
+## doSampleVariance Two Pass
+```{r, doSampleVariance Two Pass}
+doSampleVariance(monte_row,'Two Pass')
+```
+
+## Z-scores
+```{r, zscores, fig.cap = 'Plotting Raw Scores Against Z-scores' }
+num_vals = as.numeric(c(Filter(is.numeric,monte_row)))
+z = (num_vals - mean(num_vals)/sd(num_vals))
+plot(num_vals,z,main = 'Raw Scores Vs Z-Scores',xlab = 'raw scores',ylab = 'z-scores')
+```
+
+## Response
+After running the doSummary() on the record for ‘monte.shaffer@gmail.com’, it is
+apparent that the mode is 4.2, the mean is 3.48, there are no NAN values, the length
+is 64 columns, the two pass and naïve variances are both .7528136 and the standard
+deviation is .8676483.
+Considering the plot created from plotting raw scores against z-scores we can conclude
+from Figure 9 that there is a strong positive linear relationship between raw scores
+and z-scores. This is because the z-score is calculated from the raw values, meaning
+the two are highly correlated. 
+
+
+# Adding mill.200 to Will and Denzel
+Compare Will Smith and Denzel Washington. [See 03_n greater 1-v2.txt for the
+necessary functions and will-vs-denzel.txt for some sample code and in
+DROPBOX: \__student_access__\unit_01_exploratory_data_analysis\week_02\imdbexample ] You will have to create a new variable $millions.2000 that
+converts each movie's $millions based on the $year of the movie, so all
+dollars are in the same time frame. You will need inflation data from about
+1980-2020 to make this work.
+
+
+## Get Data For Actors
+```{r}
+source(paste0(local.path,"/functions/functions-imdb.R"),local = T)
+
+# Add mill.2000 column to Will's data frame with converted dollar values
+nmid = "nm0000226"
+will = grabFilmsForPerson(nmid)
+
+nmid = "nm0000243"
+denzel = grabFilmsForPerson(nmid)
+
+will$movies.50
+```
+
+## Get Inflation Data
+```{r, Inflation Data, warning = FALSE}
+source(paste0(local.path,"/functions/functions-inflation.R"),local = T)
+inflation_data = grabInflation()
+
+```
+
+## Adjust Denzel and Will Million Values
+```{r, adjusting Denzel and Will}
+
+will = convertDollars(will,inflation_data)
+denzel = convertDollars(denzel,inflation_data)
+
+head(will$movies.50)
+head(denzel$movies.50)
+
+```
+### Response
+With converting all movie revenues to year 2000 dollars, we can tell that most of the
+movies Will Smith is in have higher revenue than the movies featuring Denzel
+Washington. We can also tell that Will Smith was in a movie that generated $336.03
+million, which is considered an outlier. In general, we can see that the median
+revenue is the almost same between Will Smith and Denzel Washington, and Will Smith
+has a higher maximum revenue value than Denzel Washington. 
+
+# Will Vs Denzel
+Build side-by-side box plots on several of the variables (including #6) to compare the
+two movie stars. After each box plot, write 2+ sentence describing what you are
+seeing, and what conclusions you can logically make. You will need to review what the
+box plot is showing with the box portion, the divider in the box, and the whiskers.
+
+## Comparing Will vs Denzel Year 2000 Millions
+
+```{r, Will vs Denzel} 
+boxplot(denzel$movies.50$mill.2000,will$movies.50$mill.2000,main = 'Will vs Denzel Year 2000 Revenue (in millions)', names = c('Denzel Washington', 'Will Smith'), xlab = 'Actor' , ylab = 'Revenue(Millions)')
+```
+
+### Response
+Building a boxplot comparing the revenues (scaled to year 2000) between Will Smith and
+Denzel Washington (Figure 10), we can tell that Will Smith has a slightly higher
+median revenue than Denzel Washington. We can also conclude that fifty percent of Will
+Smith’s revenue values are between $30.45 million and $137.66 million and fifty
+percent of Denzel Washington’s revenue values are between $22.39 million and $70.06
+million. This shows us that Will Smith’s revenue values are spread out more when
+compared to Denzel Washington’s’ values.
+
+## Comparing Will vs Denzel Years
+```{r, Will vs Denzel Years}
+boxplot(denzel$movies.50$year,will$movies.50$year,main = 'Will vs Denzel Year', names = c('Denzel Washington', 'Will Smith'), xlab = 'Actor' , ylab = 'Year')
+
+```
+
+### Response
+Comparing Will Smith and Denzel Washington’s years using a boxplot (Figure 11), there
+are serval key findings. We can conclude that, for this data set, Denzel Washington
+appears in older movies when compared to Will Smith. We can also determine that Denzel
+Washington’s most recent film was before 2020, while Will Smith’s most recent film was
+in 2020. We can also conclude that half of the movies Will Smith has been featured in
+were after 2006, and the other half before 2006. Likewise, we can determine that half
+of the movies Denzel Washington has appeared in were after 1999, and the other half
+before 1999.
+
+
+## Comparing Will vs Denzel Runtime
+```{r, Will vs Denzel Runtime}
+boxplot(denzel$movies.50$minutes,will$movies.50$minutes,main = 'Will vs Denzel Runtime', names = c('Denzel Washington', 'Will Smith'), xlab = 'Actor' , ylab = 'Runtime')
+```
+
+### Response
+Using a boxplot to compare Will Smith and Denzel Washington’s movie
+runtime(Figure 12), we can conclude that Denzel Washington has appeared in
+the longest movie in the data set. We can also conclude that Will Smith
+appeared in the shortest movie in the data set. Furthermore, we can conclude
+that the upper half of Denzel Washington’s runtime values are higher than
+Will Smith’s runtime values.

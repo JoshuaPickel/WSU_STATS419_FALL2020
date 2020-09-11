@@ -1,15 +1,69 @@
 ---
-title: "W03-WriteUp"
+title: "Week 03 Assignment 02_datasets"
 author: "Josh Pickel"
-date: "9/9/2020"
-output: pdf_document
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  pdf_document:
+    citation_package: natbib
+    latex_engine: pdflatex
+    template: ./../latex-templates/homework.tex
+  html_document:
+    df_print: paged
+  word_document: default
+course: STATS 419 Survey of Multivariate Analysis
+course-short: STATS419
+instructor: Monte J. Shaffer
+email: joshua.pickel@wsu.edu
+wsu-id: 11594029
+fig_caption: yes
+number_sections: yes
 ---
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+
+# Setup
 ```{r}
+github.path = 'https://raw.githubusercontent.com/JoshuaPickel/WSU_STATS419_FALL2020/';
+source_url(paste0(github.path,'master/functions/libraries.R'));
+source_url( paste0(github.path,"master/functions/functions-imdb.R") );
 
+```
 
-
+```{r}
+# Transpose matrix function to be used in functions
+transposeMatrix = function(mat)
+		{
+	t(mat);
+	}
+# Function to rotate 90 degrees
+rotateMatrix90 = function(mat)
+	{
+	transposedMatrix = transposeMatrix(mat)
+	rotatedMatrix = transposedMatrix%*%multiplicationMatrix
+	rotatedMatrix;
+	}
+# Function to rotate 180 degrees
+rotateMatrix180 = function(mat)
+	{
+	transposedMatrix = transposeMatrix(mat)
+	rotatedMatrix = transposedMatrix%*%multiplicationMatrix
+	transposedMatrix = transposeMatrix(rotatedMatrix)
+	rotatedMatrix = transposedMatrix%*%multiplicationMatrix
+	rotatedMatrix;
+	}
+# Function to rotate 270 degrees
+rotateMatrix270 = function(mat)
+	{
+	transposedMatrix = transposeMatrix(mat)
+	rotatedMatrix = transposedMatrix%*%multiplicationMatrix
+	transposedMatrix = transposeMatrix(rotatedMatrix)
+	rotatedMatrix = transposedMatrix%*%multiplicationMatrix
+	transposedMatrix = transposeMatrix(rotatedMatrix)
+	rotatedMatrix = transposedMatrix%*%multiplicationMatrix
+	rotatedMatrix;
+	}
 ```
