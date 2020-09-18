@@ -9,7 +9,9 @@ number_sections: yes
 my_var: Josh
 ---
 
-
+```{r setup, message = FALSE, warning =FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
 # Getting Everything Set Up
 ```{r, Setup, message=FALSE,warning=FALSE}
@@ -110,12 +112,13 @@ write 2 sentences describing what pattern you are seeing and why this pattern is
 present.
 
 ## Setup and Get Row For "monte.shaffer@gmail.com"
-``` {r}
+``` {r, monte_row}
 source(paste0(local.path,"/functions/functions-custom.R"),local = T)
 monte_row = personality_clean[which(personality_clean$md5_email ==
 'b62c73cdaf59e0a13de495b84030734e'),]
 
 ```
+
 ## doSummary
 ```{r ,doSummary}
 doSummary(monte_row)

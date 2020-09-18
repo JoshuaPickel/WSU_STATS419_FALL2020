@@ -52,6 +52,7 @@ doSampleVariance = function(x, method)
       Sum = Sum + num_vals[i,1]
       SumSq = SumSq + num_vals[i,1] * num_vals[i,1]
     }
+    if (n < 2) {return(NULL);}
     variance = (SumSq - (Sum * Sum)/n)/(n-1)
     result = data.frame(SumSq, Sum, variance)
   }
@@ -70,8 +71,21 @@ doSampleVariance = function(x, method)
     {
       Sum2 = Sum2 + (num_vals[i,1] - Mean) * (num_vals[i,1] - Mean)
     }
+    if (n < 2) {return(NULL);}
     variance = Sum2/(n-1)
     result = data.frame(Sum1, Sum2, variance)
   }
   result
+}
+
+zScores = function(x)
+{
+  num_vals = num_vals = as.numeric(c(Filter(is.numeric,x)))
+  dsv = doSampleVariance(x,"two pass")
+  x_bar = mean(num_vals)
+  s_hat = sqrt(dsv$variance)
+  print(x_bar)
+  print(s_hat)
+  z = (num_vals - x_bar) / s_hat
+  list("z.score"=z,"raw.scores" = num_vals);
 }
