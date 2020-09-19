@@ -84,8 +84,6 @@ zScores = function(x)
   dsv = doSampleVariance(x,"two pass")
   x_bar = mean(num_vals)
   s_hat = sqrt(dsv$variance)
-  print(x_bar)
-  print(s_hat)
   z = (num_vals - x_bar) / s_hat
   list("z.score"=z,"raw.scores" = num_vals);
 }
