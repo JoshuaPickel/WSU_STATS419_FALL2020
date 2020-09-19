@@ -1,28 +1,31 @@
 ---
-title: "Week 03 Assignment 02_datasets"
+title: "Week 03 Assignment 02_datasets Revisited"
 author: "Josh Pickel"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 output:
   pdf_document:
+    extra_dependencies: ["float"]
     citation_package: natbib
     latex_engine: pdflatex
-    template: ./../latex-templates/homework.tex
+    template: ./../latex-templates/homework.1.tex
   html_document:
     df_print: paged
   word_document: default
 course: STATS 419 Survey of Multivariate Analysis
 course-short: STATS419
 instructor: Monte J. Shaffer
-email: 11594029.joshua.pickel@wsu.edu
-fig_caption: yes
-number_sections: yes
+email: joshua.pickel@wsu.edu
+fig_caption: true
+number_sections: true
+editor_options:
+  chunk_output_type: inline
 ---
 
 
-```{r setup, message = FALSE, warning =FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(fig.pos = 'H', out.extra = "")
 ```
-
+## Get Everyhting Set Up
 ```{r, warning=FALSE, message = FALSE}
 library(devtools)
 github.path = 'https://raw.githubusercontent.com/JoshuaPickel/WSU_STATS419_FALL2020/';
@@ -49,7 +52,7 @@ byrow=T);
 # Rotating clockwise.
 rotateMatrix90(myMatrix)
 ```
-
+\newpage
 ## Matrix 180 Degrees
 ```{r}
 # Rotating Clockwise
@@ -64,9 +67,9 @@ rotateMatrix270(myMatrix)
 
 # IRIS Plot
  Recreate the graphic for the IRIS Data Set using R. Same titles, same scales, same colors.
-\newpage
+
 ## Plot
-```{r, warning = FALSE,fig.cap = 'Plot From Plotting IRIS Data',fig.sum = c(6,6)}
+```{r, warning = FALSE,fig.cap = 'Plot From Plotting IRIS Data',fig.dim = c(6,6)}
 library(datasets)
 plot(iris[1:4],pch = 21,cex = 1,col = 'black', bg= c("red", "green3",
 "blue")[iris$Species],main = 'Iris Data(red=sestosa,green=versicolor,blue=virginica)',gap.axis = 1.5)
@@ -86,7 +89,7 @@ The data set contains 50 records for each of the different flower species; Setos
 Virginica, and Versicolor recording measurements for petal length, petal width, sepal
 width and sepal length, all recorded in centimeters.
 
-# Cleaning Personality Data
+# Personality Data
  Import "personality-raw.txt" into R. Remove the V00 column. Create two new
 columns from the current column "date_test": year and week. Stack Overflow may help:
 https://stackoverflow.com/questions/22439540/how-to-get-week-numbers-from-dates ...
@@ -98,6 +101,7 @@ data frame as "personality-clean.txt" for future work (you will not upload it at
 time). In the homework, for this tasks, report how many records your raw dataset had
 and how many records your clean dataset has.
 
+## Clean Personality Data
 ```{r,clean data, message = FALSE }
 
 source_url(paste0(github.path,"master/functions/functions-cleanup.R"))
@@ -108,6 +112,7 @@ personality_clean = convertDates(personality_clean,personality_clean$date_test)
 personality_clean = removeDuplicates(personality_clean,personality_clean$md5_email)
 head(personality_clean)
 ```
+\newpage
 ## Raw Dataset Dimensions
 ```{r}
 dim(personality_raw)
@@ -128,8 +133,9 @@ and y is the z-scores from those raw scores. Include the plot in your assignment
 write 2 sentences describing what pattern you are seeing and why this pattern is
 present.
 
-## Setup and Get Row For "monte.shaffer@gmail.com"
+
 ``` {r, message = FALSE}
+# Set up and get row for monte.shaffer@gmail.com
 source_url(paste0(github.path,"master/functions/functions-custom.R"))
 monte_row = personality_clean[which(personality_clean$md5_email ==
 'b62c73cdaf59e0a13de495b84030734e'),]
@@ -143,6 +149,7 @@ doSummary(monte_row)
 ```{r, custom_mode}
 custom_mode(monte_row)
 ```
+\newpage
 ## doSampleVariance Naive
 ```{r,doSampleVariance Naive}
 doSampleVariance(monte_row, 'naive')
@@ -186,7 +193,7 @@ denzel = grabFilmsForPerson(nmid)
 ```
 
 ## Get Inflation Data
-```{r, Inflation Data, warning = FALSE}
+```{r, Inflation Data, warning = FALSE, message = FALSE}
 source_url(paste0(github.path,"master/functions/functions-inflation.R"))
 inflation_data = grabInflation()
 ```

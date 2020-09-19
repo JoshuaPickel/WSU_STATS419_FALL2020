@@ -4,7 +4,7 @@ doSummary = function(x)
   Length = length(x)
   naNum = sum(is.na(x))
   Mean = mean(as.numeric(Filter(is.numeric,x)))
-  Mode = custom_mode(x)
+  Mode = doMode(x)
   NaiveVariance = doSampleVariance(x,'naive')
   print(NaiveVariance)
   TwoPassVariance = doSampleVariance(x,'Two Pass')
@@ -14,7 +14,7 @@ doSummary = function(x)
   results;
 }
 # Custom Mode Function
-custom_mode = function(x)
+doMode = function(x)
 {
   ModeFrame = as.data.frame(x[1])
   num_vals = as.data.frame(table(as.numeric(c(Filter(is.numeric,x)))))
