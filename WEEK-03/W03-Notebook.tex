@@ -36,7 +36,11 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
+<<<<<<< HEAD
   pdftitle={R Notebook},
+=======
+  pdftitle={R Notebook sandbox: Assignment ``Datasets'' (10 points)},
+>>>>>>> 1ae200379d183d9f3b3c5347a5519ae0e90837c8
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 \urlstyle{same} % disable monospaced font for URLs
@@ -99,13 +103,18 @@
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 
+<<<<<<< HEAD
 \title{R Notebook}
+=======
+\title{R Notebook sandbox: Assignment ``Datasets'' (10 points)}
+>>>>>>> 1ae200379d183d9f3b3c5347a5519ae0e90837c8
 \author{}
 \date{\vspace{-2.5em}}
 
 \begin{document}
 \maketitle
 
+<<<<<<< HEAD
 This is an \href{http://rmarkdown.rstudio.com}{R Markdown} Notebook.
 When you execute code within the notebook, the results appear beneath
 the code.
@@ -117,11 +126,91 @@ chunk or by placing your cursor inside it and pressing
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{plot}\NormalTok{(cars)}
+=======
+\hypertarget{getting-everything-set-up}{%
+\section{Getting Everything Set Up}\label{getting-everything-set-up}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{local.path =}\StringTok{ "C:/_git_/WSU_STATS419_FALL2020/"}\NormalTok{;}
+\KeywordTok{source}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(local.path,}\StringTok{"/functions/libraries.R"}\NormalTok{),}\DataTypeTok{local =}\NormalTok{ T)}
+\KeywordTok{source}\NormalTok{( }\KeywordTok{paste0}\NormalTok{(local.path,}\StringTok{"functions/functions-imdb.R"}\NormalTok{), }\DataTypeTok{local=}\NormalTok{T );}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{matrix}{%
+\section{Matrix}\label{matrix}}
+
+Create the ``rotate matrix'' functions as described in lectures. Apply
+to the example ``myMatrix''.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{source}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(local.path,}\StringTok{"/functions/functions-matrix.R"}\NormalTok{),}\DataTypeTok{local =}\NormalTok{ T)}
+\CommentTok{# Create myMatrix}
+\NormalTok{myMatrix =}\StringTok{ }\KeywordTok{matrix}\NormalTok{ ( }\KeywordTok{c}\NormalTok{ (}
+\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{2}\NormalTok{,}
+\DecValTok{0}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{0}\NormalTok{,}
+\DecValTok{4}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{5}
+\NormalTok{), }\DataTypeTok{nrow=}\DecValTok{3}\NormalTok{,}
+\DataTypeTok{byrow=}\NormalTok{T);}
+
+\CommentTok{# Rotating clockwise.}
+\KeywordTok{rotateMatrix90}\NormalTok{(myMatrix)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    4    0    1
+## [2,]    0    3    0
+## [3,]    5    0    2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{rotateMatrix180}\NormalTok{(myMatrix)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    5    0    4
+## [2,]    0    3    0
+## [3,]    2    0    1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{rotateMatrix270}\NormalTok{(myMatrix)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    2    0    5
+## [2,]    0    3    0
+## [3,]    1    0    4
+\end{verbatim}
+
+\hypertarget{iris-question-2}{%
+\section{IRIS Question 2}\label{iris-question-2}}
+
+Recreate the graphic for the IRIS Data Set using R. Same titles, same
+scales, same colors.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(datasets)}
+\KeywordTok{plot}\NormalTok{(iris[}\DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{],}\DataTypeTok{pch =} \DecValTok{21}\NormalTok{,}\DataTypeTok{cex =} \DecValTok{1}\NormalTok{,}\DataTypeTok{col =} \StringTok{'black'}\NormalTok{, }\DataTypeTok{bg=} \KeywordTok{c}\NormalTok{(}\StringTok{"red"}\NormalTok{, }\StringTok{"green3"}\NormalTok{,}
+\StringTok{"blue"}\NormalTok{)[iris}\OperatorTok{$}\NormalTok{Species],}\DataTypeTok{main =} \StringTok{'Iris Data(red=sestosa,green=versicolor,blue=virginica)'}\NormalTok{,}\DataTypeTok{gap.axis =} \FloatTok{1.5}\NormalTok{)}
+>>>>>>> 1ae200379d183d9f3b3c5347a5519ae0e90837c8
 \end{Highlighting}
 \end{Shaded}
 
 \includegraphics{W03-Notebook_files/figure-latex/unnamed-chunk-1-1.pdf}
 
+<<<<<<< HEAD
 Add a new chunk by clicking the \emph{Insert Chunk} button on the
 toolbar or by pressing \emph{Ctrl+Alt+I}.
 
@@ -133,5 +222,516 @@ The preview shows you a rendered HTML copy of the contents of the
 editor. Consequently, unlike \emph{Knit}, \emph{Preview} does not run
 any R code chunks. Instead, the output of the chunk when it was last run
 in the editor is displayed.
+=======
+\hypertarget{iris-question-3}{%
+\section{IRIS Question 3}\label{iris-question-3}}
+
+Right 2-3 sentences concisely defining the IRIS Data Set. Maybe search
+KAGGLE for a nice template. Be certain the final writeup are your own
+sentences (make certain you modify what you find, make it your own, but
+also cite where you got your ideas from). NOTE: Watch the video, Figure
+8 has a +5 EASTER EGG.
+
+\hypertarget{response}{%
+\subsection{Response}\label{response}}
+
+The Iris data set was created in 1936 by Edgar Anderson and is a
+multivariate data set that containing four different measurements of
+three different Iris flower species. The data set contains 50 records
+for each of the different flower species; Setosa, Virginica, and
+Versicolor recording measurements for petal length, petal width, sepal
+width and sepal length, all recorded in centimeters.
+
+\hypertarget{cleaning-data-question-4}{%
+\section{Cleaning data Question 4}\label{cleaning-data-question-4}}
+
+Import ``personality-raw.txt'' into R. Remove the V00 column. Create two
+new columns from the current column ``date\_test'': year and week. Stack
+Overflow may help:
+\url{https://stackoverflow.com/questions/22439540/how-to-get-week-numbers-from-dates}
+\ldots{} Sort the new data frame by YEAR, WEEK so the newest tests are
+first \ldots{} The newest tests (e.g., 2020 or 2019) are at the top of
+the data frame. Then remove duplicates using the unique function based
+on the column ``md5\_email''. Save the data frame in the same
+``pipe-delimited format'' ( \textbar{} is a pipe ) with the headers. You
+will keep the new data frame as ``personality-clean.txt'' for future
+work (you will not upload it at this time). In the homework, for this
+tasks, report how many records your raw dataset had and how many records
+your clean dataset has.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{source}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(local.path,}\StringTok{"/functions/functions-cleanup.R"}\NormalTok{),}\DataTypeTok{local =}\NormalTok{ T)}
+\NormalTok{files =}\StringTok{ }\KeywordTok{paste0}\NormalTok{(local.path,}\StringTok{"/datasets/personality-raw.txt"}\NormalTok{)}
+\NormalTok{personality_raw =}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(files,}\DataTypeTok{header =}\NormalTok{ T, }\DataTypeTok{sep =} \StringTok{'|'}\NormalTok{)}
+\NormalTok{personality_clean =}\StringTok{ }\KeywordTok{removeColumn}\NormalTok{(personality_raw,}\StringTok{'V00'}\NormalTok{)}
+\NormalTok{personality_clean =}\StringTok{ }\KeywordTok{convertDates}\NormalTok{(personality_clean,personality_clean}\OperatorTok{$}\NormalTok{date_test)}
+\NormalTok{personality_clean =}\StringTok{ }\KeywordTok{removeDuplicates}\NormalTok{(personality_clean,personality_clean}\OperatorTok{$}\NormalTok{md5_email)}
+\KeywordTok{dim}\NormalTok{(personality_clean)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 678  64
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{dim}\NormalTok{(personality_raw)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 838  63
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(personality_clean)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                            md5_email       date_test V01 V02 V03 V04 V05 V06
+## 838 b62c73cdaf59e0a13de495b84030734e  4/6/2020 12:57 3.4 4.2 2.6 4.2 2.6 2.6
+## 837 1358d38e6898b1a0e5940f8b99ba2325 12/1/2019 22:12 3.4 3.4 3.4 4.2 4.2 4.2
+## 835 f529455e4400e76f323f8c68154e194b   5/6/2019 4:44 4.2 5.0 1.8 4.2 4.2 5.0
+## 836 0445a05e751e17de30ebdcbcdb575d59  5/6/2019 10:32 1.8 2.6 3.4 4.2 5.0 3.4
+## 828 bfd1c69406d322d17312e965752813c2  5/2/2019 10:26 2.6 4.2 1.0 4.2 4.2 2.6
+## 829 9cf05d7d516099c9533b98beb91993b9  5/2/2019 10:48 5.0 5.0 1.8 5.0 5.0 4.2
+##     V07 V08 V09 V10 V11 V12 V13 V14 V15 V16 V17 V18 V19 V20 V21 V22 V23 V24 V25
+## 838 4.2 2.6 3.4 4.2 4.2 3.4 3.4 4.2 5.0 3.4 5.0 3.4 1.8 2.6 2.6 2.6 4.2 3.4 5.0
+## 837 5.0 3.4 4.2 3.4 2.6 3.4 3.4 4.2 4.2 4.2 4.2 4.2 3.4 2.6 3.4 4.2 4.2 4.2 2.6
+## 835 3.4 3.4 4.2 3.4 2.6 2.6 4.2 5.0 3.4 4.2 5.0 4.2 2.6 2.6 1.8 3.4 5.0 3.4 1.8
+## 836 2.6 2.6 5.0 3.4 2.6 4.2 2.6 3.4 4.2 3.4 4.2 4.2 3.4 1.8 2.6 3.4 4.2 5.0 1.8
+## 828 3.4 1.8 4.2 4.2 1.8 2.6 3.4 5.0 4.2 4.2 5.0 4.2 3.4 1.8 1.0 3.4 4.2 3.4 1.8
+## 829 1.0 5.0 5.0 5.0 1.0 5.0 5.0 5.0 5.0 5.0 5.0 3.4 3.4 3.4 4.2 5.0 5.0 3.4 1.8
+##     V26 V27 V28 V29 V30 V31 V32 V33 V34 V35 V36 V37 V38 V39 V40 V41 V42 V43 V44
+## 838 2.6 4.2 3.4 2.6 2.6 4.2 1.8 3.4 4.2 4.2 4.2 2.6 4.2 2.6 4.2 4.2 4.2 4.2 2.6
+## 837 4.2 4.2 3.4 2.6 4.2 4.2 3.4 4.2 3.4 4.2 5.0 3.4 4.2 4.2 4.2 4.2 4.2 4.2 4.2
+## 835 4.2 3.4 5.0 1.8 5.0 4.2 1.8 4.2 3.4 2.6 3.4 2.6 3.4 3.4 5.0 3.4 3.4 3.4 3.4
+## 836 3.4 2.6 3.4 2.6 4.2 5.0 5.0 5.0 5.0 5.0 5.0 3.4 5.0 5.0 5.0 4.2 5.0 5.0 5.0
+## 828 4.2 5.0 3.4 1.8 4.2 3.4 4.2 4.2 3.4 4.2 3.4 1.8 5.0 3.4 4.2 1.8 2.6 4.2 4.2
+## 829 5.0 5.0 4.2 3.4 5.0 5.0 4.2 5.0 5.0 5.0 5.0 2.6 3.4 5.0 4.2 5.0 5.0 3.4 5.0
+##     V45 V46 V47 V48 V49 V50 V51 V52 V53 V54 V55 V56 V57 V58 V59 V60 week year
+## 838 4.2 4.2 2.6 3.4 2.6 4.2 1.8 4.2 2.6 3.4 4.2 4.2 1.8 4.2 2.6 4.2   15 2020
+## 837 3.4 4.2 4.2 2.6 3.4 4.2 3.4 4.2 4.2 4.2 4.2 3.4 4.2 4.2 3.4 3.4   48 2019
+## 835 4.2 5.0 3.4 4.2 3.4 4.2 2.6 3.4 5.0 5.0 3.4 3.4 3.4 3.4 1.8 3.4   19 2019
+## 836 5.0 5.0 5.0 4.2 4.2 3.4 3.4 5.0 5.0 5.0 2.6 5.0 5.0 5.0 4.2 5.0   19 2019
+## 828 4.2 4.2 4.2 2.6 3.4 1.8 2.6 2.6 5.0 4.2 3.4 2.6 2.6 4.2 4.2 4.2   18 2019
+## 829 5.0 5.0 5.0 3.4 5.0 5.0 5.0 5.0 5.0 5.0 1.0 2.6 3.4 5.0 5.0 3.4   18 2019
+\end{verbatim}
+
+The raw dataset had 878 records, and the clean dataset has 673 records.
+
+\hypertarget{custom-functions}{%
+\section{Custom Functions}\label{custom-functions}}
+
+Write functions for doSummary and sampleVariance and doMode \ldots{}
+test these functions in your homework on the
+``\href{mailto:monte.shaffer@gmail.com}{\nolinkurl{monte.shaffer@gmail.com}}''
+record from the clean dataset. Report your findings. For this
+``\href{mailto:monte.shaffer@gmail.com}{\nolinkurl{monte.shaffer@gmail.com}}''
+record, also create z-scores. Plot(x,y) where x is the raw scores for
+``\href{mailto:monte.shaffer@gmail.com}{\nolinkurl{monte.shaffer@gmail.com}}''
+and y is the z-scores from those raw scores. Include the plot in your
+assignment, and write 2 sentences describing what pattern you are seeing
+and why this pattern is present.
+
+\hypertarget{setup-and-get-row-for-monte.shaffergmail.com}{%
+\subsection{\texorpdfstring{Setup and Get Row For
+``\href{mailto:monte.shaffer@gmail.com}{\nolinkurl{monte.shaffer@gmail.com}}''}{Setup and Get Row For ``monte.shaffer@gmail.com''}}\label{setup-and-get-row-for-monte.shaffergmail.com}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{source}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(local.path,}\StringTok{"/functions/functions-custom.R"}\NormalTok{),}\DataTypeTok{local =}\NormalTok{ T)}
+\NormalTok{monte_row =}\StringTok{ }\NormalTok{personality_clean[}\KeywordTok{which}\NormalTok{(personality_clean}\OperatorTok{$}\NormalTok{md5_email }\OperatorTok{==}
+\StringTok{'b62c73cdaf59e0a13de495b84030734e'}\NormalTok{),]}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{dosummary}{%
+\subsection{doSummary}\label{dosummary}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{doSummary}\NormalTok{(monte_row)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    SumSq   Sum  variance
+## 1 771.04 208.8 0.7528136
+\end{verbatim}
+
+\begin{verbatim}
+##                            md5_email mode Mean naNum Length
+## 838 b62c73cdaf59e0a13de495b84030734e  4.2 3.48     0     64
+##     TwoPassVariance.variance NaiveVariance.variance        Sd
+## 838                0.7528136              0.7528136 0.8676483
+\end{verbatim}
+
+\hypertarget{custom_mode}{%
+\subsection{custom\_mode}\label{custom_mode}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{custom_mode}\NormalTok{(monte_row)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                            md5_email mode
+## 838 b62c73cdaf59e0a13de495b84030734e  4.2
+\end{verbatim}
+
+\hypertarget{dosamplevariance-naive}{%
+\subsection{doSampleVariance Naive}\label{dosamplevariance-naive}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{doSampleVariance}\NormalTok{(monte_row, }\StringTok{'naive'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    SumSq   Sum  variance
+## 1 771.04 208.8 0.7528136
+\end{verbatim}
+
+\hypertarget{dosamplevariance-two-pass}{%
+\subsection{doSampleVariance Two Pass}\label{dosamplevariance-two-pass}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{doSampleVariance}\NormalTok{(monte_row,}\StringTok{'Two Pass'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Sum1   Sum2  variance
+## 1 208.8 44.416 0.7528136
+\end{verbatim}
+
+\hypertarget{z-scores}{%
+\subsection{Z-scores}\label{z-scores}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{num_vals =}\StringTok{ }\KeywordTok{as.numeric}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\KeywordTok{Filter}\NormalTok{(is.numeric,monte_row)))}
+\NormalTok{z =}\StringTok{ }\NormalTok{(num_vals }\OperatorTok{-}\StringTok{ }\KeywordTok{mean}\NormalTok{(num_vals)}\OperatorTok{/}\KeywordTok{sd}\NormalTok{(num_vals))}
+\KeywordTok{plot}\NormalTok{(num_vals,z,}\DataTypeTok{main =} \StringTok{'Raw Scores Vs Z-Scores'}\NormalTok{,}\DataTypeTok{xlab =} \StringTok{'raw scores'}\NormalTok{,}\DataTypeTok{ylab =} \StringTok{'z-scores'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{W03-Notebook_files/figure-latex/zscores-1.pdf}
+\caption{Plotting Raw Scores Against Z-scores}
+\end{figure}
+
+\hypertarget{response-1}{%
+\subsection{Response}\label{response-1}}
+
+After running the doSummary() on the record for
+`\href{mailto:monte.shaffer@gmail.com}{\nolinkurl{monte.shaffer@gmail.com}}',
+it is apparent that the mode is 4.2, the mean is 3.48, there are no NAN
+values, the length is 64 columns, the two pass and naïve variances are
+both .7528136 and the standard deviation is .8676483. Considering the
+plot created from plotting raw scores against z-scores we can conclude
+from Figure 9 that there is a strong positive linear relationship
+between raw scores and z-scores. This is because the z-score is
+calculated from the raw values, meaning the two are highly correlated.
+
+\hypertarget{adding-mill.200-to-will-and-denzel}{%
+\section{Adding mill.200 to Will and
+Denzel}\label{adding-mill.200-to-will-and-denzel}}
+
+Compare Will Smith and Denzel Washington. {[}See 03\_n greater 1-v2.txt
+for the necessary functions and will-vs-denzel.txt for some sample code
+and in DROPBOX:
+\_\_student\_access\_\_\unit\_01\_exploratory\_data\_analysis\week\_02\imdbexample {]}
+You will have to create a new variable \$millions.2000 that converts
+each movie's \$millions based on the \$year of the movie, so all dollars
+are in the same time frame. You will need inflation data from about
+1980-2020 to make this work.
+
+\hypertarget{get-data-for-actors}{%
+\subsection{Get Data For Actors}\label{get-data-for-actors}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{source}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(local.path,}\StringTok{"/functions/functions-imdb.R"}\NormalTok{),}\DataTypeTok{local =}\NormalTok{ T)}
+
+\CommentTok{# Add mill.2000 column to Will's data frame with converted dollar values}
+\NormalTok{nmid =}\StringTok{ "nm0000226"}
+\NormalTok{will =}\StringTok{ }\KeywordTok{grabFilmsForPerson}\NormalTok{(nmid)}
+
+\NormalTok{nmid =}\StringTok{ "nm0000243"}
+\NormalTok{denzel =}\StringTok{ }\KeywordTok{grabFilmsForPerson}\NormalTok{(nmid)}
+
+\NormalTok{will}\OperatorTok{$}\NormalTok{movies}\FloatTok{.50}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    rank                                 title      ttid year     rated minutes
+## 1     1                           I Am Legend tt0480249 2007     PG-13     101
+## 2     2                         Suicide Squad tt1386697 2016     PG-13     123
+## 3     3                      Independence Day tt0116629 1996     PG-13     145
+## 4     4                          Men in Black tt0119654 1997     PG-13      98
+## 5     5                              I, Robot tt0343818 2004     PG-13     115
+## 6     6              The Pursuit of Happyness tt0454921 2006     PG-13     117
+## 7     7                               Hancock tt0448157 2008     PG-13      92
+## 8     8                       Men in Black II tt0120912 2002     PG-13      88
+## 9     9                        Men in Black 3 tt1409024 2012     PG-13     106
+## 10   10                                 Hitch tt0386588 2005     PG-13     118
+## 11   11                          Seven Pounds tt0814314 2008     PG-13     123
+## 12   12                              Bad Boys tt0112442 1995         R     119
+## 13   13                           Bad Boys II tt0172156 2003         R     147
+## 14   14                    Enemy of the State tt0120660 1998         R     132
+## 15   15                               Aladdin tt6139732 2019        PG     128
+## 16   16 Austin Powers: The Spy Who Shagged Me tt0145660 1999     PG-13      95
+## 17   17                                 Focus tt2381941 2015         R     105
+## 18   18                           After Earth tt1815862 2013     PG-13     100
+## 19   19                        This Means War tt1596350 2012     PG-13     103
+## 20   20     Anchorman 2: The Legend Continues tt1229340 2013     PG-13     119
+## 21   21                                Bright tt5519340 2017     TV-MA     117
+## 22   22                            Shark Tale tt0307453 2004        PG      90
+## 23   23                        The Karate Kid tt1155076 2010        PG     140
+## 24   24                        Wild Wild West tt0120891 1999     PG-13     106
+## 25   25                       The Parent Trap tt0120783 1998        PG     128
+## 26   26                     Bad Boys For Life tt1502397 2020         R     124
+## 27   27                                   Ali tt0248667 2001         R     157
+## 28   28                     Collateral Beauty tt4682786 2016     PG-13      97
+## 29   29                            Concussion tt3322364 2015     PG-13     123
+## 30   30                            Gemini Man tt1025100 2019     PG-13     117
+## 31   31                          Strange Days tt0114558 1995         R     145
+## 32   32                           Jersey Girl tt0300051 2004     PG-13     102
+## 33   33                              Showtime tt0284490 2002     PG-13      95
+## 34   34            The Legend of Bagger Vance tt0146984 2000     PG-13     126
+## 35   35                         Winter's Tale tt1837709 2014     PG-13     118
+## 36   36                          Stuck on You tt0338466 2003     PG-13     118
+## 37   37                      Lakeview Terrace tt0947802 2008     PG-13     110
+## 38   38                                 Annie tt1823664 2014        PG     118
+## 39   39             Jimmy Neutron: Boy Genius tt0268397 2001         G      82
+## 40   40                          The Wackness tt1082886 2008         R      99
+## 41   41                     Spies in Disguise tt5814534 2019        PG     102
+## 42   42                                Gringo tt3721964 2018         R     111
+## 43   43               The Secret Life of Bees tt0416212 2008     PG-13     114
+## 44   44             Six Degrees of Separation tt0108149 1993         R     112
+## 45   45                  Malibu's Most Wanted tt0328099 2003     PG-13      86
+## 46   46                             Superstar tt0167427 1999     PG-13      81
+## 47   47           I Could Never Be Your Woman tt0466839 2007     PG-13      97
+## 48   48                       Made in America tt0107478 1993     PG-13     111
+## 49   49                 Student of the Year 2 tt7255568 2019 Not Rated     146
+## 50   50                                   ATL tt0466856 2006     PG-13     105
+##                           genre ratings metacritic  votes millions
+## 1      Action, Adventure, Drama     7.2         65 674895   256.39
+## 2    Action, Adventure, Fantasy     6.0         40 587706   325.10
+## 3     Action, Adventure, Sci-Fi     7.0         59 520539   306.17
+## 4     Action, Adventure, Comedy     7.3         71 507412   250.69
+## 5         Action, Drama, Sci-Fi     7.1         59 491297   144.80
+## 6              Biography, Drama     8.0         64 437898   163.57
+## 7               Action, Fantasy     6.4         49 437716   227.95
+## 8     Action, Adventure, Comedy     6.2         49 337392   190.42
+## 9     Action, Adventure, Comedy     6.8         58 329880   179.02
+## 10              Comedy, Romance     6.6         58 291924   179.50
+## 11                        Drama     7.6         36 282450    69.95
+## 12        Action, Comedy, Crime     6.9         41 235669    65.81
+## 13        Action, Comedy, Crime     6.6         38 227798   138.61
+## 14             Action, Thriller     7.3         67 223937   111.55
+## 15   Adventure, Family, Fantasy     7.0         53 215898   355.56
+## 16    Action, Adventure, Comedy     6.6         59 213671   206.04
+## 17         Comedy, Crime, Drama     6.6         56 212692    53.86
+## 18    Action, Adventure, Sci-Fi     4.8         33 189282    60.52
+## 19      Action, Comedy, Romance     6.3         31 173883    54.76
+## 20                       Comedy     6.3         61 165870   127.35
+## 21    Action, Fantasy, Thriller     6.3         29 164824       NA
+## 22 Animation, Adventure, Comedy     6.0         48 164063   160.86
+## 23        Action, Drama, Family     6.2         61 157884   176.59
+## 24       Action, Comedy, Sci-Fi     4.9         38 151081   113.81
+## 25     Adventure, Comedy, Drama     6.5         64 117693    66.31
+## 26        Action, Comedy, Crime     6.6         59 112435   204.42
+## 27      Biography, Drama, Sport     6.8         65  92480    58.20
+## 28               Drama, Romance     6.8         23  89086    31.02
+## 29      Biography, Drama, Sport     7.1         55  84704    34.54
+## 30        Action, Drama, Sci-Fi     5.7         38  75921    20.55
+## 31         Action, Crime, Drama     7.2         66  66057     7.92
+## 32       Comedy, Drama, Romance     6.2         43  62686    25.27
+## 33        Action, Comedy, Crime     5.5         32  59970    38.08
+## 34        Drama, Fantasy, Sport     6.7         47  52821    30.70
+## 35      Drama, Fantasy, Mystery     6.2         31  51458     0.02
+## 36                       Comedy     5.7         62  50600    33.83
+## 37       Crime, Drama, Thriller     6.1         47  48199    39.26
+## 38        Comedy, Drama, Family     5.3         33  33421    85.91
+## 39 Animation, Action, Adventure     6.0         65  30178    80.94
+## 40       Comedy, Drama, Romance     7.0         61  29698     2.08
+## 41 Animation, Adventure, Comedy     6.8         54  28415       NA
+## 42        Action, Comedy, Crime     6.1         46  25754     4.97
+## 43                        Drama     7.3         57  23951    37.77
+## 44       Comedy, Drama, Mystery     6.8         72  19426     6.41
+## 45                Comedy, Crime     5.2         43  18351    34.31
+## 46              Comedy, Romance     5.2         42  17757    30.63
+## 47       Comedy, Drama, Romance     6.0         NA  16854       NA
+## 48                       Comedy     5.1         NA  15445    44.94
+## 49        Drama, Romance, Sport     2.2         NA  15170     0.78
+## 50         Comedy, Crime, Drama     6.1         63  10579    21.16
+\end{verbatim}
+
+\hypertarget{get-inflation-data}{%
+\subsection{Get Inflation Data}\label{get-inflation-data}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{source}\NormalTok{(}\KeywordTok{paste0}\NormalTok{(local.path,}\StringTok{"/functions/functions-inflation.R"}\NormalTok{),}\DataTypeTok{local =}\NormalTok{ T)}
+\NormalTok{inflation_data =}\StringTok{ }\KeywordTok{grabInflation}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{adjust-denzel-and-will-million-values}{%
+\subsection{Adjust Denzel and Will Million
+Values}\label{adjust-denzel-and-will-million-values}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{will =}\StringTok{ }\KeywordTok{convertDollars}\NormalTok{(will,inflation_data)}
+\NormalTok{denzel =}\StringTok{ }\KeywordTok{convertDollars}\NormalTok{(denzel,inflation_data)}
+
+\KeywordTok{head}\NormalTok{(will}\OperatorTok{$}\NormalTok{movies}\FloatTok{.50}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   rank                    title      ttid year rated minutes
+## 1    1              I Am Legend tt0480249 2007 PG-13     101
+## 2    2            Suicide Squad tt1386697 2016 PG-13     123
+## 3    3         Independence Day tt0116629 1996 PG-13     145
+## 4    4             Men in Black tt0119654 1997 PG-13      98
+## 5    5                 I, Robot tt0343818 2004 PG-13     115
+## 6    6 The Pursuit of Happyness tt0454921 2006 PG-13     117
+##                        genre ratings metacritic  votes millions mill.2000
+## 1   Action, Adventure, Drama     7.2         65 674895   256.39  212.9349
+## 2 Action, Adventure, Fantasy     6.0         40 587706   325.10  233.2524
+## 3  Action, Adventure, Sci-Fi     7.0         59 520539   306.17  336.0260
+## 4  Action, Adventure, Comedy     7.3         71 507412   250.69  268.9646
+## 5      Action, Drama, Sci-Fi     7.1         59 491297   144.80  131.9987
+## 6           Biography, Drama     8.0         64 437898   163.57  139.7160
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(denzel}\OperatorTok{$}\NormalTok{movies}\FloatTok{.50}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   rank             title      ttid year rated minutes                   genre
+## 1    1 American Gangster tt0765429 2007     R     157 Biography, Crime, Drama
+## 2    2      Training Day tt0139654 2001     R     122  Crime, Drama, Thriller
+## 3    3        Inside Man tt0454848 2006     R     129   Crime, Drama, Mystery
+## 4    4     The Equalizer tt0455944 2014     R     132 Action, Crime, Thriller
+## 5    5       Man on Fire tt0328107 2004     R     146    Action, Crime, Drama
+## 6    6            Flight tt1907668 2012     R     138         Drama, Thriller
+##   ratings metacritic  votes millions mill.2000
+## 1     7.8         76 383907   130.16 108.09943
+## 2     7.7         69 381893    76.63  74.50980
+## 3     7.6         76 331884    88.51  75.60229
+## 4     7.2         57 325919   101.53  73.85216
+## 5     7.7         47 324053    77.91  71.02224
+## 6     7.3         76 320176    93.77  70.32934
+\end{verbatim}
+
+\hypertarget{response-2}{%
+\subsubsection{Response}\label{response-2}}
+
+With converting all movie revenues to year 2000 dollars, we can tell
+that most of the movies Will Smith is in have higher revenue than the
+movies featuring Denzel Washington. We can also tell that Will Smith was
+in a movie that generated \$336.03 million, which is considered an
+outlier. In general, we can see that the median revenue is the almost
+same between Will Smith and Denzel Washington, and Will Smith has a
+higher maximum revenue value than Denzel Washington.
+
+\hypertarget{will-vs-denzel}{%
+\section{Will Vs Denzel}\label{will-vs-denzel}}
+
+Build side-by-side box plots on several of the variables (including \#6)
+to compare the two movie stars. After each box plot, write 2+ sentence
+describing what you are seeing, and what conclusions you can logically
+make. You will need to review what the box plot is showing with the box
+portion, the divider in the box, and the whiskers.
+
+\hypertarget{comparing-will-vs-denzel-year-2000-millions}{%
+\subsection{Comparing Will vs Denzel Year 2000
+Millions}\label{comparing-will-vs-denzel-year-2000-millions}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{boxplot}\NormalTok{(denzel}\OperatorTok{$}\NormalTok{movies}\FloatTok{.50}\OperatorTok{$}\NormalTok{mill}\FloatTok{.2000}\NormalTok{,will}\OperatorTok{$}\NormalTok{movies}\FloatTok{.50}\OperatorTok{$}\NormalTok{mill}\FloatTok{.2000}\NormalTok{,}\DataTypeTok{main =} \StringTok{'Will vs Denzel Year 2000 Revenue (in millions)'}\NormalTok{, }\DataTypeTok{names =} \KeywordTok{c}\NormalTok{(}\StringTok{'Denzel Washington'}\NormalTok{, }\StringTok{'Will Smith'}\NormalTok{), }\DataTypeTok{xlab =} \StringTok{'Actor'}\NormalTok{ , }\DataTypeTok{ylab =} \StringTok{'Revenue(Millions)'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{W03-Notebook_files/figure-latex/Will vs Denzel-1.pdf}
+
+\hypertarget{response-3}{%
+\subsubsection{Response}\label{response-3}}
+
+Building a boxplot comparing the revenues (scaled to year 2000) between
+Will Smith and Denzel Washington (Figure 10), we can tell that Will
+Smith has a slightly higher median revenue than Denzel Washington. We
+can also conclude that fifty percent of Will Smith's revenue values are
+between \$30.45 million and \$137.66 million and fifty percent of Denzel
+Washington's revenue values are between \$22.39 million and \$70.06
+million. This shows us that Will Smith's revenue values are spread out
+more when compared to Denzel Washington's' values.
+
+\hypertarget{comparing-will-vs-denzel-years}{%
+\subsection{Comparing Will vs Denzel
+Years}\label{comparing-will-vs-denzel-years}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{boxplot}\NormalTok{(denzel}\OperatorTok{$}\NormalTok{movies}\FloatTok{.50}\OperatorTok{$}\NormalTok{year,will}\OperatorTok{$}\NormalTok{movies}\FloatTok{.50}\OperatorTok{$}\NormalTok{year,}\DataTypeTok{main =} \StringTok{'Will vs Denzel Year'}\NormalTok{, }\DataTypeTok{names =} \KeywordTok{c}\NormalTok{(}\StringTok{'Denzel Washington'}\NormalTok{, }\StringTok{'Will Smith'}\NormalTok{), }\DataTypeTok{xlab =} \StringTok{'Actor'}\NormalTok{ , }\DataTypeTok{ylab =} \StringTok{'Year'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{W03-Notebook_files/figure-latex/Will vs Denzel Years-1.pdf}
+
+\hypertarget{response-4}{%
+\subsubsection{Response}\label{response-4}}
+
+Comparing Will Smith and Denzel Washington's years using a boxplot
+(Figure 11), there are serval key findings. We can conclude that, for
+this data set, Denzel Washington appears in older movies when compared
+to Will Smith. We can also determine that Denzel Washington's most
+recent film was before 2020, while Will Smith's most recent film was in
+2020. We can also conclude that half of the movies Will Smith has been
+featured in were after 2006, and the other half before 2006. Likewise,
+we can determine that half of the movies Denzel Washington has appeared
+in were after 1999, and the other half before 1999.
+
+\hypertarget{comparing-will-vs-denzel-runtime}{%
+\subsection{Comparing Will vs Denzel
+Runtime}\label{comparing-will-vs-denzel-runtime}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{boxplot}\NormalTok{(denzel}\OperatorTok{$}\NormalTok{movies}\FloatTok{.50}\OperatorTok{$}\NormalTok{minutes,will}\OperatorTok{$}\NormalTok{movies}\FloatTok{.50}\OperatorTok{$}\NormalTok{minutes,}\DataTypeTok{main =} \StringTok{'Will vs Denzel Runtime'}\NormalTok{, }\DataTypeTok{names =} \KeywordTok{c}\NormalTok{(}\StringTok{'Denzel Washington'}\NormalTok{, }\StringTok{'Will Smith'}\NormalTok{), }\DataTypeTok{xlab =} \StringTok{'Actor'}\NormalTok{ , }\DataTypeTok{ylab =} \StringTok{'Runtime'}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{W03-Notebook_files/figure-latex/Will vs Denzel Runtime-1.pdf}
+
+\hypertarget{response-5}{%
+\subsubsection{Response}\label{response-5}}
+
+Using a boxplot to compare Will Smith and Denzel Washington's movie
+runtime(Figure 12), we can conclude that Denzel Washington has appeared
+in the longest movie in the data set. We can also conclude that Will
+Smith appeared in the shortest movie in the data set. Furthermore, we
+can conclude that the upper half of Denzel Washington's runtime values
+are higher than Will Smith's runtime values.
+>>>>>>> 1ae200379d183d9f3b3c5347a5519ae0e90837c8
 
 \end{document}

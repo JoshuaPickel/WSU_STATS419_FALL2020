@@ -30,8 +30,8 @@ titleEndnotes: "ENDNOTES"
 titleReferences: "REFERENCES"
 columnsReferences: 2
 titleTOC:  "TABLE OF CONTENTS"
-bibliography: ./../biblio/master.bib
-bibliostyle: ./../biblio/ormsv080.bst
+bibliography: master.bib
+bibliostyle: ormsv080.bst
 date: "`r format(Sys.time(), '%B %d, %Y')`"
 ---
 
@@ -327,15 +327,17 @@ library(devtools);       # required for source_url
 path.humanVerseWSU = "https://raw.githubusercontent.com/MonteShaffer/humanVerseWSU/"
 source_url( paste0(path.humanVerseWSU,"master/misc/functions-project-measure.R") );
 
+library(humanVerseWSU)
+
 ```
 
 Below is the code to load the data and prepare it for analysis.
 
 ```{r,appendix-secret,message=FALSE}
 
-path.project = "C:/_git_/WSU_STATS419_FALL2020/project-measure/";
+path.project = "C:/_git_/WSU_STATS419_FALL2020/Project/";
 
-path.to.secret = "C:/Users/Alexander Nevsky/Dropbox/WSU-419/Fall 2020/__student_access__/_SECRET_/";
+path.to.secret = "C:/Users/Dropbox/_SECRET_/";
 
 measure = utils::read.csv( paste0(path.to.secret, "measure-students.txt"), header=TRUE, quote="", sep="|");
 
